@@ -1,3 +1,6 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qmetropolis Optimizing Modern Data Processing Systems with Automated Reasoning Matthias Vogelgesang Centre for Modern Beamer Themes First Section.\\E$"}
 {"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\QModern Data Processing: Data Data is increasing in volume & velocity The optimizer needs to produce faster plans in shorter time\\E$"}
 {"rule":"WHITESPACE_RULE","sentence":"^\\QAutomated Reasoning for Data Processing Chase & Backchase: Given \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, find the smallest  query \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q s.t.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qto \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, by chasing \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"CONFUSION_OF_THESES_THESE","sentence":"^\\QMy Theses Core components and techniques from automated reasoning can make query optimizers simpler, more efficient, and more effective.\\E$"}
+{"rule":"THE_SUPERLATIVE","sentence":"^\\QModern Data Processing: Queries Betweenness centrality of a graph \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q: \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q where \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is the distance, \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is the of shortest paths.\\E$"}
