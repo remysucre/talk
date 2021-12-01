@@ -141,6 +141,41 @@
     $Q_1 \subseteq Q_2 \rightarrow A_{Q_1 \wedge \neg Q_2} = \emptyset$
   \end{frame}
 
+  \begin{frame}{Automated Reasoning for Data Processing}
+    \textbf{Axiomatic Rewriting} proves equivalence by chaining together 
+    a sequence of axioms. \pause
+    Rule-based query optimizers essentially implement that, for example:
+    \[\forall R, S, p: \sigma_p (R\bowtie S) \equiv \sigma_p(R) \bowtie \sigma_p(S)\]
+    corresponds to the ``push-down selection'' rewrite.\pause
+
+    If two queries can rewrite to each other, they are equivalent.
+  \end{frame}
+
+  \begin{frame}{Automated Reasoning for Data Processing}
+    \textbf{Program Verification} checks if a program satisfies a specification:
+    \[\Psi(Q_{\text{in}}, Q) \stackrel{def}{=} \forall \bar R : Q_{\text{in}}(\bar R) = Q(\bar R)\]
+    which is valid if $Q_{\text{in}}(\bar R) \neq Q(\bar R)$ is UNSAT (no model for $\bar R$). \pause
+
+    \textbf{Program Synthesis} generates a program satisfying a specification:
+    \[\Phi(Q_{\text{in}}) \stackrel{def}{=} \forall \bar R : Q_{\text{in}}(\bar R) = Q(\bar R)\]
+    which gives a solution when there is a model for $Q$.
+  \end{frame}
+
+  \begin{frame}{Mismatch of Reasoning and Modern Data Processing}
+    \begin{itemize}
+      \item Logic assume set semantics; but data processing needs bag/beyond-bag semantics. \pause
+      \item Logics w/ aggregates exist, but no support in well-engineered reasoners (SMT solvers). \pause
+      \item Most system developers don't have deep knowledge on logic. \pause
+    \end{itemize}    
+  \end{frame}
+
+  \begin{frame}{Mismatch of Reasoning and Modern Data Processing}
+    \textbf{Need:} simple ways to reason about the expressive semantics and operations in modern 
+    data processing. \pause
+
+    \textbf{Solution:} functional representation + axiomatic rewrite + SMT
+  \end{frame}
+
   \section{The Functional Representation of Data}
   \section{Building Optimizers that Reason}
   \section{Proposal: Improving Optimizers with Reasoning}
