@@ -1,2 +1,3 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qmetropolis Optimizing Modern Data Processing Systems with Automated Reasoning Matthias Vogelgesang Centre for Modern Beamer Themes First Section.\\E$"}
 {"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\QModern Data Processing: Data Data is increasing in volume & velocity The optimizer needs to produce faster plans in shorter time\\E$"}
+{"rule":"WHITESPACE_RULE","sentence":"^\\QAutomated Reasoning for Data Processing Chase & Backchase: Given \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, find the smallest  query \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q s.t.\\E$"}

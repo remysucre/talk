@@ -81,6 +81,66 @@
   \end{frame}
 
   \section{Background: Query Optimization and Reasoning}
+  \begin{frame}{Query Optimization}
+    \begin{figure}
+      \includegraphics[width=0.7\linewidth]{opt.pdf}
+    \end{figure}
+    Given an input query and constraints on the data, 
+    output an equivalent query that is more efficient. \pause \\
+    This is a \textbf{synthesis problem}: given a specification,
+    output a program that satisfies the spec.
+  \end{frame}
+
+  \begin{frame}{Query Optimization}
+    A related problem: given constraints ($\Sigma$) on the data ($I$), 
+    check if two queries ($\psi, \phi$) are equivalent.
+    \[\forall I . \Sigma(I) \implies (\psi(I) = \phi(I)) \] \pause
+    This is a \textbf{verification problem}:
+    given a specification, check that a program meets the specification.
+  \end{frame}
+
+  \begin{frame}{Automated Reasoning}
+    Both verification problems and synthesis problems are studied 
+    extensively in automated reasoning.
+  \end{frame}
+
+  \begin{frame}{Automated Reasoning for Data Processing}
+    \textbf{The Chase} is an algorithm that has wide applications 
+    in data management. It has the property:
+    \begin{alertblock}{The Chase preserves query equivalence}
+      Chasing a query $Q$ with a set of integrity constraints $\Sigma$
+      results in a query $Q'$ s.t.~$\Sigma \models Q'\equiv Q$.
+    \end{alertblock}
+  \end{frame}
+
+  \begin{frame}{Automated Reasoning for Data Processing}
+    \textbf{Chase \& Backchase}: Given $Q$, find the smallest~\footnote{
+      Refer to CITE for a formal definition of ``small''.
+    }
+    query $Q'$ s.t.~$Q'\equiv Q$.
+    \begin{figure}
+      \includegraphics[width=0.3\linewidth]{backchase.pdf}
+    \end{figure}
+    First chase the input into a {\em universal} plan $\hat Q$, \pause 
+    then check if any subplan $Q'$ of $\hat Q$ is equiv.~to $Q$,
+    by chasing $Q'$.
+  \end{frame}
+
+  \begin{frame}{Automated Reasoning for Data Processing}
+    \textbf{Tree Automata} can capture certain class of
+    relational queries, by coding tree-like data with trees.
+    \begin{figure}
+      \colorbox{white}{
+      \includegraphics[width=0.3\linewidth]{tree1.pdf}
+      \hspace{1cm}
+      \includegraphics[width=0.3\linewidth]{tree2.pdf}}
+    \end{figure}
+    \pause
+    Emptiness of tree automata is \textbf{decidable}! \\
+    Check query containment: 
+    $Q_1 \subseteq Q_2 \rightarrow A_{Q_1 \wedge \neg Q_2} = \emptyset$
+  \end{frame}
+
   \section{The Functional Representation of Data}
   \section{Building Optimizers that Reason}
   \section{Proposal: Improving Optimizers with Reasoning}
