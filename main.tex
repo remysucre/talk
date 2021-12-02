@@ -14,6 +14,18 @@
   tabsize=2,
 }
 
+\newcommand{\B}{\mathbb B} % complex numbers
+\newcommand{\C}{\mathbb C} % complex numbers
+\newcommand{\N}{\mathbb N} % the natural numbers
+\newcommand{\R}{\mathbb R} % the real numbers
+\newcommand{\Q}{\mathbb Q} % the rational numbers
+\newcommand{\D}{\mathbf D} % bold-face D, used for generic domain
+\newcommand{\SR}{\mathbf S} % semiring
+\newcommand{\dleq}{\mbox{ :- }}
+
+\newcommand{\set}[1]{\{#1\}}                    % Set (as in \set{1,2,3}).
+\newcommand{\setof}[2]{\{{#1}\mid{#2}\}}        % Set (as in \setof{x}{x>0}).
+
 \usetheme{metropolis}           % Use metropolis theme
 
 \title{Optimizing Modern Data Processing Systems with Automated Reasoning}
@@ -175,8 +187,49 @@
 
     \textbf{Solution:} functional representation + axiomatic rewrite + SMT
   \end{frame}
+  
+  \section{Functional Representation of Data}
+  \begin{frame}{The Functional Representation of Data}
+    Generalize every relation $R : \D^a$ to a function 
+    $f_R : \D^a \rightarrow \SR$,
+    where $\SR$ is a commutative semiring. \pause
+    \begin{itemize}
+      \item A $\B$-relation is a standard relation under \textbf{set} semantics. \pause
+      \item An $\N$-relation is a standard relation under \textbf{bag} semantics. \pause
+      \item When $\D = [n]$, an $\R$-relation is a tensor over the reals.
+    \end{itemize}
+  \end{frame}
 
-  \section{The Functional Representation of Data}
+  \begin{frame}{The Functional Representation of Data}
+    An expression in $\SR$-relational algebra is one of:
+    \begin{enumerate}
+      \item An \textbf{atom} $r$ of the form $R(x_1, ..., x_a)$.
+      \item A \textbf{natural join} of two expressions $e_1 \times e_2$.
+      \item A \textbf{union} of two expressions, $e_1 + e_2$.
+      \item An \textbf{aggregate},  $\sum_x e$.
+    \end{enumerate} \pause
+    A variable $x$ is \textbf{bound} in $e$ if $e$ contains $\sum_x e'$;
+    otherwise it is \textbf{free}. \pause 
+    Every atom $R(x_1, ..., x_a)$ evaluates to some $s \in \SR$, and
+    $+, \times$ and $\sum$ compute over $\SR$.
+  \end{frame}
+
+  \begin{frame}{The Functional Representation of Data}
+    $\sum_y E(x, y) \times E(y, z)$ specializes to 
+    different semantics under different semiring $\SR$:
+    \begin{enumerate}
+      \item Under $(\mathbb{B},\vee, \wedge, \texttt{false}, \texttt{true})$
+          it is the binary join $Q(x, z) \dleq E(x, y), E(y, z).$ 
+          under set semantics. \pause
+      \item Under $(\mathbb{N}, +, \times, 0, 1)$ it is under
+          bag semantics. \pause
+      \item Under $(\mathbb{R}, +, \times, 0, 1)$ it computes the matrix product $EE$. \pause
+      \item Under $(\mathbb{N} \cup \set{\infty}, \min, +, \infty, 0)$ it computes the lengths
+          of all shortest 2-paths in the graph $E$.
+  \end{enumerate}
+  
+  \end{frame}
+
   \section{Building Optimizers that Reason}
   \section{Proposal: Improving Optimizers with Reasoning}
 \end{document}
