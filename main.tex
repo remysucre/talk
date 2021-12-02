@@ -247,7 +247,7 @@
   \end{frame}
 
   \begin{frame}{The Functional Representation of Data}
-    \alert{Isomorphism Captures Equivalence} 
+    \alert{Isomorphism Captures Equivalence} ($\bigstar$)
     Let $e_1, e_2$ be two  canonical expressions.
     Then the following conditions are equivalent:
     \begin{itemize}
@@ -269,7 +269,45 @@
       \item Reason about queries using well-established techniques.
     \end{enumerate}
   \end{frame}
-
+  
   \section{Building Optimizers that Reason}
+
+  \begin{frame}{Building Optimizers that Reason}
+    \onslide<1-2>{\textbf{Program Verification} checks if a program satisfies a specification:
+    \[\Psi(Q_{\text{in}}, Q) \stackrel{def}{=} \forall \bar R : Q_{\text{in}}(\bar R) = Q(\bar R)\]
+    which is valid if $Q_{\text{in}}(\bar R) \neq Q(\bar R)$ is UNSAT (no model for $\bar R$).}
+
+    \onslide<1>{\textbf{Program Synthesis} generates a program satisfying a specification:
+    \[\Phi(Q_{\text{in}}) \stackrel{def}{=} \forall \bar R : Q_{\text{in}}(\bar R) = Q(\bar R)\]
+    which gives a solution when there is a model for $Q$.}
+  \end{frame}
+
+  \begin{frame}{Verifying Equivalence}
+    \textbf{Challenges}
+    \begin{itemize}
+      \item Not all domain types are well-supported ($\N \cup \set{\infty}$, $\R$).
+      \item Hard to encode $\sum$; unfolding is unsound \& blows up
+    \end{itemize}
+  \end{frame}
+  
+  \begin{frame}{Verifying Equivalence}
+    \textbf{Solution} To support domain types: Theorem ($\bigstar$) 
+    allows us to switch to the $\N$-semiring to check equivalence. \pause
+    
+    To verify the commutativity of join, solve for: 
+    \[f_R(x, y) \times f_S(y, z) \neq f_S(y, z) \times f_R(x, y)\]
+    where $x, y, z$ are natural numbers, $f_R, f_S$ are uninterpreted
+    functions of type $\N \times \N \rightarrow \N$. 
+  \end{frame}
+
+  \begin{frame}
+    \textbf{Solution} To encode $\sum$: Introduce an uninterpreted function
+    \[f_{\Sigma}:\N\times \N \rightarrow \N\] 
+    and encode every aggregation $\sum_x e$ with $f_{\Sigma}(x, e)$. \pause
+
+    \textbf{Soundness}: $f_{\Sigma}(x_1, e_1) \neq f_{\Sigma}(x_2, e_2)$ only
+ if $x_1 \neq x_2$ or $e_1 \neq e_2$.
+  \end{frame}
+
   \section{Proposal: Improving Optimizers with Reasoning}
 \end{document}
