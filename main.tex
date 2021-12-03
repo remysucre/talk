@@ -1,5 +1,8 @@
 \documentclass{beamer}
 
+\usepackage[small,nohug,heads=vee]{diagrams}
+\diagramstyle[labelstyle=\scriptstyle]
+\usepackage{mathtools}
 \usepackage{listings}
 \lstset{
   columns=flexible,
@@ -22,6 +25,7 @@
 \newcommand{\D}{\mathbf D} % bold-face D, used for generic domain
 \newcommand{\SR}{\mathbf S} % semiring
 \newcommand{\dleq}{\mbox{ :- }}
+\newcommand{\deq}{\stackrel{\text{def}}{=}}
 
 \newcommand{\set}[1]{\{#1\}}                    % Set (as in \set{1,2,3}).
 \newcommand{\setof}[2]{\{{#1}\mid{#2}\}}        % Set (as in \setof{x}{x>0}).
@@ -300,13 +304,126 @@
     functions of type $\N \times \N \rightarrow \N$. 
   \end{frame}
 
-  \begin{frame}
+  \begin{frame}{Verifying Equivalence}
     \textbf{Solution} To encode $\sum$: Introduce an uninterpreted function
     \[f_{\Sigma}:\N\times \N \rightarrow \N\] 
     and encode every aggregation $\sum_x e$ with $f_{\Sigma}(x, e)$. \pause
 
     \textbf{Soundness}: $f_{\Sigma}(x_1, e_1) \neq f_{\Sigma}(x_2, e_2)$ only
- if $x_1 \neq x_2$ or $e_1 \neq e_2$.
+    if $x_1 \neq x_2$ or $e_1 \neq e_2$.\pause
+
+    \textbf{Incompleteness}: cannot prove 
+    e.g.~$\sum_x e_1 + \sum_x e_2 = \sum_x e_1 + e_2$.
+  \end{frame}
+
+  \begin{frame}{Verifying Equivalence}
+    \textbf{Solution} Alternatively, canonize \& check for isomorphism:
+    \[Q_1 \xrightarrow[]{\text{canonize}} \equiv \xleftarrow[]{\text{canonize}} Q_2\]
+    Complete by ($\bigstar$) for {\em pure} $\SR$-RA expressions; \pause
+    augment with SMT to reason about interpreted functions:
+    \[Q_1 \xrightarrow[]{\text{canonize}} \text{SMT} \xleftarrow[]{\text{canonize}} Q_2\]
+  \end{frame}
+
+  \begin{frame}{Exploring Query Plans}
+    \begin{figure}
+      \includegraphics[width=0.7\linewidth]{opt.pdf}
+    \end{figure}
+    2 ways to explore search equivalence space / search efficient space
+  \end{frame}
+
+  \begin{frame}{Searching the Equivalence Space}
+    Grow a collection of equivalence plans \& find the cheapest. \pause
+
+    An \textbf{E-Graph} is a compact data structure to store collections 
+    of equivalent expressions:
+    \begin{figure}
+      \includegraphics[width=0.3\linewidth]{fgn.pdf}
+    \end{figure}
+    Group \& share equiv.~subexpressions: there are $\Omega(N^2)$ expr.~above!
+  \end{frame}
+
+  \begin{frame}{Searching the Equivalence Space}
+    Grow an e-graph by applying rewrite rules:
+    \begin{figure}
+      \includegraphics[width=0.3\linewidth]{fgn.pdf}
+    \end{figure}
+    while preserving \textbf{congruence}: 
+    \[\forall f : \bigwedge_{i \in [k]} x_i \equiv y_i \implies f(x_1, \ldots, x_k ) \equiv f(y_1, \ldots, y_k)\]
+  \end{frame}
+
+  \begin{frame}{Searching the Equivalence Space}
+    Generate a boolean variable per operation ($B_{op}$) and 
+    one per equivalence class ($B_{c}$), then solve:
+    \begin{align*}
+      Constraints &\deq B_r \wedge \bigwedge_{op} F(op) \wedge \bigwedge_c G(c)
+      \\ F(op) &\deq B_{op} \rightarrow \bigwedge_{c \in op.children} B_c \\ G(c)
+      &\deq B_c \rightarrow \bigvee_{op \in c.nodes} B_{op}
+      \end{align*}
+      \[\textbf{minimize} \sum_{op} B_{op} \cdot C_{op} \textbf{ s.t. } Constraints\]
+  \end{frame}
+
+  \begin{frame}{Searching the Efficient Space}
+    \begin{figure}
+      \includegraphics[width=0.7\linewidth]{opt.pdf}
+    \end{figure}
+    Search among the efficient plans for one equivalent to the input.
+  \end{frame}
+
+  \begin{frame}{Searching the Efficient Space}
+    \textbf{Goal} To optimize an expensive recursive query:
+    \[Q \deq G(F(\cdots F(\bar R))) \text{ (apply $F$ to a fixpoint)}\] \pause
+    \textbf{Solution} Find a function $H$ such that:
+    \[\forall \bar R : H^*(G(\bar R)) = G(F^*(\bar R))\]
+    More efficient when $G$ reduces dimension!
+  \end{frame}
+
+  \begin{frame}{Searching the Efficient Space}
+    Sufficient to find $H$ s.t.~$H\circ G \equiv G \circ F$:
+    \begin{diagram}
+      X_0   & \rTo^F & X_1 & \rTo^F & X_2 & \ldots & \rTo^F & X_n\\
+     \dTo^G  &            & \dTo^G    &            & \dTo^G    &        &            & \dTo^G\\
+      Y_0        & \rTo^H & Y_1 & \rTo^H & Y_2 & \ldots & \rTo^H & Y_n
+  \end{diagram}  
+  \end{frame}
+
+  \begin{frame}{Searching the Efficient Space}
+    How to find $H$? ``Generate \& check'':
+    \begin{figure}
+      \includegraphics[width=0.7\linewidth]{cegis.pdf}
+    \end{figure}
+    Enumerate all $\SR$-RA expressions until 
+    finding $H$ s.t.~$H\circ G \equiv G \circ F$ \pause
+
+    Hopelessly inefficient!
+  \end{frame}
+
+  \begin{frame}{Searching the Efficient Space}
+    How to find $H$? Counterexample-guided Synthesis (CEGIS):
+    \begin{figure}
+      \includegraphics[width=0.7\linewidth]{cegis.pdf}
+    \end{figure}
+    Implement both the generator \& checker with an SMT solver \\
+    Guide generation of plans by {\em counterexamples} from the checker
+  \end{frame}
+
+  \begin{frame}{Searching the Efficient Space}
+    \textbf{Challenge} CEGIS requires the checker \& the generator to 
+    be implemented entirely in SMT. \pause \\
+    But we'd like to combine SMT with rewriting:
+    \[Q_1 \xrightarrow[]{\text{canonize}} \text{SMT} \xleftarrow[]{\text{canonize}} Q_2\]\pause
+    \textbf{Solution} Canonize input query $G \circ F$ before CEGIS,
+    then constrain grammar to only generate {\em canonical} plans that 
+    can be ``denormalized'' into $H\circ G$.
+    \[Q_1 \xrightarrow[]{\text{canonize}} \text{CEGIS} \xrightarrow[]{\text{denormalize}} Q_2\]
+  \end{frame}
+
+  \begin{frame}{Building Optimizers that Reason}
+    \textbf{Summary}
+    \begin{itemize}
+      \item Automated reasoning can verify query equivalence.
+      \item Both SMT solvers and rewriting can reason about queries.
+      \item We can explore the search space with reasoning.
+    \end{itemize}
   \end{frame}
 
   \section{Proposal: Improving Optimizers with Reasoning}
