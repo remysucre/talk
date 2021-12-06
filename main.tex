@@ -427,4 +427,153 @@
   \end{frame}
 
   \section{Proposal: Improving Optimizers with Reasoning}
+
+  \begin{frame}{Improving Optimizers with Reasoning}
+    A developer of a new system can innovate more freely, 
+    but a mature system is difficult to change.
+
+    Relational databases a.la.~SQL are highly mature systems; 
+    can they benefit from automated reasoning? 
+  \end{frame}
+
+  \begin{frame}{The Cascade Framework}
+    Developed for SQLServer CITE and implemented in 
+    many SOTA query optimizers CITE. \pause
+
+    Apply a set of \textbf{rewrite rules} to grow a collection 
+    of \textbf{equivalent plans}, then extract the best. \pause
+
+    Store plans compactly in a {\em memo table}, where equivalent 
+    subplans are grouped into {\em memo groups}.
+  \end{frame}
+
+  \begin{frame}{The Cascade Framework}
+    Almost identical to equality saturation 
+    (e-graph $\mapsto$ {\em memo table}, 
+    equivalence class $\mapsto$ {\em memo group}):
+    \begin{figure}
+      \includegraphics[width=0.3\linewidth]{fgn.pdf}
+    \end{figure}
+    With one crucial difference: eq.~sat.~maintains 
+    \textbf{congruence}.
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    An equivalence relation $=$ is congruent if:
+ \[\forall f : \bigwedge_{i \in [k]} x_i = y_i \implies
+  f(x_1, \ldots, x_k) = f(y_1, \ldots, y_k)\] \pause
+  \begin{figure}
+    \includegraphics[width=0.25\linewidth]{cong1.pdf}
+  \end{figure}
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    An equivalence relation $=$ is congruent if:
+ \[\forall f : \bigwedge_{i \in [k]} x_i = y_i \implies
+  f(x_1, \ldots, x_k) = f(y_1, \ldots, y_k)\] 
+  \begin{figure}
+    \includegraphics[width=0.25\linewidth]{cong2.pdf}
+  \end{figure}
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    An equivalence relation $=$ is congruent if:
+ \[\forall f : \bigwedge_{i \in [k]} x_i = y_i \implies
+  f(x_1, \ldots, x_k) = f(y_1, \ldots, y_k)\] 
+  \begin{figure}
+    \includegraphics[width=0.25\linewidth]{cong3.pdf}
+  \end{figure}
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    An equivalence relation $=$ is congruent if:
+ \[\forall f : \bigwedge_{i \in [k]} x_i = y_i \implies
+  f(x_1, \ldots, x_k) = f(y_1, \ldots, y_k)\] 
+  \begin{figure}
+    \includegraphics[width=0.25\linewidth]{cong4.pdf}
+  \end{figure}
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    An equivalence relation $=$ is congruent if:
+ \[\forall f : \bigwedge_{i \in [k]} x_i = y_i \implies
+  f(x_1, \ldots, x_k) = f(y_1, \ldots, y_k)\] 
+  \begin{figure}
+    \includegraphics[width=0.4\linewidth]{cong5.pdf}
+  \end{figure}
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    An equivalence relation $=$ is congruent if:
+ \[\forall f : \bigwedge_{i \in [k]} x_i = y_i \implies
+  f(x_1, \ldots, x_k) = f(y_1, \ldots, y_k)\] 
+  \begin{figure}
+    \includegraphics[width=0.4\linewidth]{cong6.pdf}
+  \end{figure}
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    An equivalence relation $=$ is congruent if:
+ \[\forall f : \bigwedge_{i \in [k]} x_i = y_i \implies
+  f(x_1, \ldots, x_k) = f(y_1, \ldots, y_k)\] 
+  \begin{figure}
+    \includegraphics[width=0.5\linewidth]{cong7.pdf}
+  \end{figure}
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    An equivalence relation $=$ is congruent if:
+ \[\forall f : \bigwedge_{i \in [k]} x_i = y_i \implies
+  f(x_1, \ldots, x_k) = f(y_1, \ldots, y_k)\] 
+  \begin{figure}
+    \includegraphics[width=0.5\linewidth]{cong8.pdf}
+  \end{figure}
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    An equivalence relation $=$ is congruent if:
+ \[\forall f : \bigwedge_{i \in [k]} x_i = y_i \implies
+  f(x_1, \ldots, x_k) = f(y_1, \ldots, y_k)\] 
+  \begin{figure}
+    \includegraphics[width=0.5\linewidth]{cong9.pdf}
+  \end{figure}
+  \end{frame}
+
+  \begin{frame}{Congruence}
+    Maintaining congruence is beneficial:
+    \begin{itemize}
+      \item It can make the data structure more compact 
+      \item Which allows exploration to run longer \pause
+    \end{itemize}
+    Maintaining congruence is non-trivial:
+    \begin{itemize}
+      \item Naive algorithm runs in quadratic time CITE 
+      \item Need to efficiently update related data structure
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Congruence in Cascade-style Optimizers}
+    \textbf{Hypothesis}
+    An optimizer that maintains congruence can run faster and
+    produce more efficient query plans.
+
+    \textbf{Proposal}
+    Maintain congruence in Cascade-style optimizers, and investigate
+    the impact on the performance of the optimizer \& the 
+    plan it produces.
+  \end{frame}
+
+  \begin{frame}{Congruence in Cascade-style Optimizers}
+    \textbf{Systems to Extend}
+
+    CockroachDB (distributed SQL database):
+    \begin{figure}
+      \includegraphics[width=0.6\linewidth]{cockroach.jpeg}
+    \end{figure}
+    Green Plum Orca (Modular optimizer):
+    \begin{figure}
+      \includegraphics[width=0.6\linewidth]{orca.jpeg}
+    \end{figure}
+    A SQL verifier by Chu et.al.~CITE
+  \end{frame}
 \end{document}
