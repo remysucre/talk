@@ -133,7 +133,7 @@
   \end{frame}
 
   \begin{frame}{Automated Reasoning for Data Processing}
-    \textbf{Chase \& Backchase}: Given $Q$, find the smallest~\footnote{
+    \textbf{Chase \& Backchase CITE}: Given $Q$, find the smallest~\footnote{
       Refer to CITE for a formal definition of ``small''.
     }
     query $Q'$ s.t.~$Q'\equiv Q$.
@@ -199,7 +199,7 @@
   \begin{frame}{The Functional Representation of Data}
     Generalize every relation $R : \D^a$ to a function 
     $f_R : \D^a \rightarrow \SR$,
-    where $\SR$ is a commutative semiring. \pause
+    where $\SR$ is a commutative semiring CITE. \pause
     \begin{itemize}
       \item A $\B$-relation is a standard relation under \textbf{set} semantics. \pause
       \item An $\N$-relation is a standard relation under \textbf{bag} semantics. \pause
@@ -254,7 +254,7 @@
   \end{frame}
 
   \begin{frame}{The Functional Representation of Data}
-    \alert{Isomorphism Captures Equivalence} ($\bigstar$)
+    \alert{Isomorphism Captures Equivalence CITE} ($\bigstar$)
     Let $e_1, e_2$ be two  canonical expressions.
     Then the following conditions are equivalent:
     \begin{itemize}
@@ -337,7 +337,7 @@
   \begin{frame}{Searching the Equivalence Space}
     Grow a collection of equivalence plans \& find the cheapest. \pause
 
-    An \textbf{E-Graph} is a compact data structure to store collections 
+    An \textbf{E-Graph CITE} is a compact data structure to store collections 
     of equivalent expressions:
     \begin{figure}
       \includegraphics[width=0.3\linewidth]{fgn.pdf}
@@ -356,7 +356,7 @@
 
   \begin{frame}{Searching the Equivalence Space}
     Generate a boolean variable per operation ($B_{op}$) and 
-    one per equivalence class ($B_{c}$), then solve:
+    one per equivalence class ($B_{c}$), then solve CITE :
     \begin{align*}
       Constraints &\deq B_r \wedge \bigwedge_{op} F(op) \wedge \bigwedge_c G(c)
       \\ F(op) &\deq B_{op} \rightarrow \bigwedge_{c \in op.children} B_c \\ G(c)
@@ -375,7 +375,7 @@
   \begin{frame}{Searching the Efficient Space}
     \textbf{Goal} To optimize an expensive recursive query:
     \[Q \deq G(F(\cdots F(\bar R))) \text{ (apply $F$ to a fixpoint)}\] \pause
-    \textbf{Solution} Find a function $H$ such that:
+    \textbf{Solution CITE} Find a function $H$ such that:
     \[\forall \bar R : H^*(G(\bar R)) = G(F^*(\bar R))\]
     More efficient when $G$ reduces dimension!
   \end{frame}
@@ -401,7 +401,7 @@
   \end{frame}
 
   \begin{frame}{Searching the Efficient Space}
-    How to find $H$? Counterexample-guided Synthesis (CEGIS):
+    How to find $H$? Counterexample-guided Synthesis CITE (CEGIS):
     \begin{figure}
       \includegraphics[width=0.7\linewidth]{cegis.pdf}
     \end{figure}
@@ -414,7 +414,7 @@
     be implemented entirely in SMT. \pause \\
     But we'd like to combine SMT with rewriting:
     \[Q_1 \xrightarrow[]{\text{canonize}} \text{SMT} \xleftarrow[]{\text{canonize}} Q_2\]\pause
-    \textbf{Solution} Canonize input query $G \circ F$ before CEGIS,
+    \textbf{Solution CITE} Canonize input query $G \circ F$ before CEGIS,
     then constrain grammar to only generate {\em canonical} plans that 
     can be ``denormalized'' into $H\circ G$.
     \[Q_1 \xrightarrow[]{\text{canonize}} \text{CEGIS} \xrightarrow[]{\text{denormalize}} Q_2\]
@@ -634,11 +634,11 @@
   \begin{frame}{Congruence in Cascade-style Optimizers}
     \textbf{Systems to Extend}
 
-    CockroachDB (distributed SQL database):
+    CockroachDB CITE (distributed SQL database):
     \begin{figure}
       \includegraphics[width=0.6\linewidth]{cockroach.jpeg}
     \end{figure}
-    Green Plum Orca (Modular optimizer):
+    Green Plum Orca CITE (Modular optimizer):
     \begin{figure}
       \includegraphics[width=0.6\linewidth]{orca.jpeg}
     \end{figure}
