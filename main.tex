@@ -2,6 +2,7 @@
 
 \usepackage[small,nohug,heads=vee]{diagrams}
 \diagramstyle[labelstyle=\scriptstyle]
+\usepackage{caption}
 \usepackage{mathtools}
 \usepackage{listings}
 \lstset{
@@ -576,4 +577,66 @@
     \end{figure}
     A SQL verifier by Chu et.al.~CITE
   \end{frame}
+
+  \begin{frame}{Evaluation}
+    Investigate impact on optimizer \& query performance.
+    \begin{figure}
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{perf.pdf} % first figure itself
+        \caption*{Compile time}
+    \end{minipage}
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{perf.pdf} % second figure itself
+        \caption*{Compile memory}
+    \end{minipage}
+    \begin{minipage}{0.3\textwidth}
+      \includegraphics[width=\textwidth]{perf.pdf} % second figure itself
+      \caption*{Query time}
+    \end{minipage}
+    \end{figure}
+  \end{frame}
+
+  \begin{frame}{Research Plan}
+    \textbf{Hack} Congruence can be implemented as a set of rewrite rules:
+    \begin{align*}
+      e_1 \bowtie e_2 & \rightarrow e_1 \bowtie e_2 \\
+      \sigma_p e & \rightarrow \sigma_p e \\
+      \pi_{\mathbf{x}} e & \rightarrow \pi_{\mathbf{x}} e \\
+      & \cdots
+    \end{align*} \pause
+    Suboptimal, but achieves same compression \& query performance \pause
+    
+    Can serve as a proxy / poor person's congruence
+  \end{frame}
+
+  \begin{frame}{Research Plan}
+    \begin{enumerate}
+      \item Implement congruence as rewrites \& measure performance
+      \item If congruence seems ``worth it'', implement an optimal algorithm
+      \item Measure performance
+    \end{enumerate} \pause
+    \begin{figure}
+      \includegraphics[width=0.3\linewidth]{poor.pdf}
+      \caption*{Performance of congruence algorithms}
+    \end{figure}
+  \end{frame}
+
+  \section{Conclusion}
+
+  \begin{frame}{Conclusion}
+    \begin{itemize}
+      \item Core components and techniques from \textbf{automated reasoning}
+      can make query optimizers simpler, more efficient,
+      and more effective. 
+      \item The \textbf{functional representation} of data can enable query 
+      optimizers to effectively leverage automated reasoning tools.
+    \end{itemize}
+    \textbf{Completed projects} \\
+    An optimizer for linear algebra based on equality saturation\\
+    An optimizer for recursive queries based on program synthesis
+
+    \textbf{Proposal} \\
+    Extend a Cascade-style optimizer with congruence.
+  \end{frame}
+
 \end{document}
