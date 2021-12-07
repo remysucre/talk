@@ -1,0 +1,778 @@
+@inproceedings{orca,
+author = {Soliman, Mohamed A. and Antova, Lyublena and Raghavan, Venkatesh and El-Helw, Amr and Gu, Zhongxian and Shen, Entong and Caragea, George C. and Garcia-Alvarado, Carlos and Rahman, Foyzur and Petropoulos, Michalis and Waas, Florian and Narayanan, Sivaramakrishnan and Krikellas, Konstantinos and Baldwin, Rhonda},
+title = {Orca: A Modular Query Optimizer Architecture for Big Data},
+year = {2014},
+isbn = {9781450323765},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2588555.2595637},
+doi = {10.1145/2588555.2595637},
+abstract = {The performance of analytical query processing in data management systems depends primarily on the capabilities of the system's query optimizer. Increased data volumes and heightened interest in processing complex analytical queries have prompted Pivotal to build a new query optimizer.In this paper we present the architecture of Orca, the new query optimizer for all Pivotal data management products, including Pivotal Greenplum Database and Pivotal HAWQ. Orca is a comprehensive development uniting state-of-the-art query optimization technology with own original research resulting in a modular and portable optimizer architecture.In addition to describing the overall architecture, we highlight several unique features and present performance comparisons against other systems.},
+booktitle = {Proceedings of the 2014 ACM SIGMOD International Conference on Management of Data},
+pages = {337–348},
+numpages = {12},
+keywords = {parallel processing, mpp, cost model, query optimization},
+location = {Snowbird, Utah, USA},
+series = {SIGMOD '14}
+}
+
+@inproceedings{cockroachdb,
+  title={Cockroachdb: The resilient geo-distributed sql database},
+  author={Taft, Rebecca and Sharif, Irfan and Matei, Andrei and VanBenschoten, Nathan and Lewis, Jordan and Grieger, Tobias and Niemi, Kai and Woods, Andy and Birzin, Anne and Poss, Raphael and others},
+  booktitle={Proceedings of the 2020 ACM SIGMOD International Conference on Management of Data},
+  pages={1493--1509},
+  year={2020}
+}
+
+@inproceedings{vgt,
+author = {Van Gelder, A. and Topor, R.},
+title = {Safety and Correct Translation of Relational Calculus Formulas},
+year = {1987},
+isbn = {0897912233},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/28659.28693},
+doi = {10.1145/28659.28693},
+abstract = {Not all queries in relational calculus can be answered “sensibly” once disjunction, negation, and universal quantification are allowed. The class of relational calculus queries, or formulas, that have “sensible” answers is called the domain independent class, which is known to be undecidable. Subsequent research has focused on identifying large decidable subclasses of domain independent formulas In this paper we investigate the properties of two such classes the evaluable formulas and the allowed formulas. Although both classes have been defined before, we give simplified definitions, present short proofs of their man properties, and describe a method to incorporate equality.Although evaluable queries have sensible answers, it is not straightforward to compute them efficiently or correctly. We introduce relational algebra normal form for formulas from which form the correct translation into relational algebra is trivial. We give algorithms to transform an evaluable formula into an equivalent allowed formula, and from there into relational algebra normal form. Our algorithms avoid use of the so-called Dom relation, consisting of all constants appearing in the database or the query.Finally, we describe a restriction under which every domain independent formula is evaluable, and argue that evaluable formulas may be the largest decidable subclass of the domain independent formulas that can be efficiently recognized.},
+booktitle = {Proceedings of the Sixth ACM SIGACT-SIGMOD-SIGART Symposium on Principles of Database Systems},
+pages = {313–327},
+numpages = {15},
+location = {San Diego, California, USA},
+series = {PODS '87}
+}
+
+@article{hull-su,
+  author    = {Richard Hull and
+               Jianwen Su},
+  title     = {Domain Independence and the Relational Calculus},
+  journal   = {Acta Informatica},
+  volume    = {31},
+  number    = {6},
+  pages     = {513--524},
+  year      = {1994},
+  url       = {https://doi.org/10.1007/BF01213204},
+  doi       = {10.1007/BF01213204},
+  timestamp = {Sun, 21 Jun 2020 17:38:13 +0200},
+  biburl    = {https://dblp.org/rec/journals/acta/HullS94.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{interpreted-structures,
+  author    = {Michael Benedikt and
+               Leonid Libkin},
+  title     = {Relational queries over interpreted structures},
+  journal   = {J. {ACM}},
+  volume    = {47},
+  number    = {4},
+  pages     = {644--680},
+  year      = {2000},
+  url       = {https://doi.org/10.1145/347476.347477},
+  doi       = {10.1145/347476.347477},
+  timestamp = {Tue, 06 Nov 2018 12:51:45 +0100},
+  biburl    = {https://dblp.org/rec/journals/jacm/BenediktL00.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+  @book{fmt,
+  author    = {Leonid Libkin},
+  title     = {Elements of Finite Model Theory},
+  series    = {Texts in Theoretical Computer Science. An {EATCS} Series},
+  publisher = {Springer},
+  year      = {2004},
+  url       = {http://www.cs.toronto.edu/\%7Elibkin/fmt},
+  doi       = {10.1007/978-3-662-07003-1},
+  isbn      = {3-540-21202-7},
+  timestamp = {Wed, 10 Jul 2019 10:47:06 +0200},
+  biburl    = {https://dblp.org/rec/books/sp/Libkin04.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{codd,
+  author    = {E. F. Codd},
+  title     = {Relational Completeness of Data Base Sublanguages},
+  journal   = {Research Report / {RJ} / {IBM} / San Jose, California},
+  volume    = {{RJ987}},
+  year      = {1972},
+  timestamp = {Fri, 21 Feb 2020 15:01:40 +0100},
+  biburl    = {https://dblp.org/rec/persons/Codd72.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{rel-ematching,
+  author    = {Yihong Zhang and
+               Yisu Remy Wang and
+               Max Willsey and
+               Zachary Tatlock},
+  title     = {Relational E-Matching},
+  journal   = {CoRR},
+  volume    = {abs/2108.02290},
+  year      = {2021},
+  url       = {https://arxiv.org/abs/2108.02290},
+  eprinttype = {arXiv},
+  eprint    = {2108.02290},
+  timestamp = {Wed, 11 Aug 2021 15:24:08 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-2108-02290.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{really,
+  author    = {Viktor Leis and
+               Andrey Gubichev and
+               Atanas Mirchev and
+               Peter A. Boncz and
+               Alfons Kemper and
+               Thomas Neumann},
+  title     = {How Good Are Query Optimizers, Really?},
+  journal   = {Proc. {VLDB} Endow.},
+  volume    = {9},
+  number    = {3},
+  pages     = {204--215},
+  year      = {2015},
+  url       = {http://www.vldb.org/pvldb/vol9/p204-leis.pdf},
+  doi       = {10.14778/2850583.2850594},
+  timestamp = {Sat, 25 Apr 2020 13:59:04 +0200},
+  biburl    = {https://dblp.org/rec/journals/pvldb/LeisGMBK015.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{eqsat,
+  author    = {Ross Tate and
+               Michael Stepp and
+               Zachary Tatlock and
+               Sorin Lerner},
+  title     = {Equality Saturation: {A} New Approach to Optimization},
+  journal   = {Log. Methods Comput. Sci.},
+  volume    = {7},
+  number    = {1},
+  year      = {2011},
+  url       = {https://doi.org/10.2168/LMCS-7(1:10)2011},
+  doi       = {10.2168/LMCS-7(1:10)2011},
+  timestamp = {Thu, 25 Jun 2020 21:29:12 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1012-1802.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{tensat,
+  author    = {Yichen Yang and
+               Mangpo Phitchaya Phothilimtha and
+               Yisu Remy Wang and
+               Max Willsey and
+               Sudip Roy and
+               Jacques Pienaar},
+  title     = {Equality Saturation for Tensor Graph Superoptimization},
+  journal   = {CoRR},
+  volume    = {abs/2101.01332},
+  year      = {2021},
+  url       = {https://arxiv.org/abs/2101.01332},
+  eprinttype = {arXiv},
+  eprint    = {2101.01332},
+  timestamp = {Tue, 26 Jan 2021 13:39:42 +0100},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-2101-01332.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{z3,
+  author    = {Leonardo Mendon{\c{c}}a de Moura and
+               Nikolaj Bj{\o}rner},
+  editor    = {C. R. Ramakrishnan and
+               Jakob Rehof},
+  title     = {{Z3:} An Efficient {SMT} Solver},
+  booktitle = {Tools and Algorithms for the Construction and Analysis of Systems,
+               14th International Conference, {TACAS} 2008, Held as Part of the Joint
+               European Conferences on Theory and Practice of Software, {ETAPS} 2008,
+               Budapest, Hungary, March 29-April 6, 2008. Proceedings},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {4963},
+  pages     = {337--340},
+  publisher = {Springer},
+  year      = {2008},
+  url       = {https://doi.org/10.1007/978-3-540-78800-3\_24},
+  doi       = {10.1007/978-3-540-78800-3\_24},
+  timestamp = {Tue, 14 May 2019 10:00:53 +0200},
+  biburl    = {https://dblp.org/rec/conf/tacas/MouraB08.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{spark,
+  author    = {Shelly Grossman and
+               Sara Cohen and
+               Shachar Itzhaky and
+               Noam Rinetzky and
+               Mooly Sagiv},
+  editor    = {Rupak Majumdar and
+               Viktor Kuncak},
+  title     = {Verifying Equivalence of Spark Programs},
+  booktitle = {Computer Aided Verification - 29th International Conference, {CAV}
+               2017, Heidelberg, Germany, July 24-28, 2017, Proceedings, Part {II}},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {10427},
+  pages     = {282--300},
+  publisher = {Springer},
+  year      = {2017},
+  url       = {https://doi.org/10.1007/978-3-319-63390-9\_15},
+  doi       = {10.1007/978-3-319-63390-9\_15},
+  timestamp = {Tue, 14 May 2019 10:00:43 +0200},
+  biburl    = {https://dblp.org/rec/conf/cav/GrossmanCIRS17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{aggregate-logic,
+  author    = {Lauri Hella and
+               Leonid Libkin and
+               Juha Nurmonen and
+               Limsoon Wong},
+  title     = {Logics with Aggregate Operators},
+  booktitle = {14th Annual {IEEE} Symposium on Logic in Computer Science, Trento,
+               Italy, July 2-5, 1999},
+  pages     = {35--44},
+  publisher = {{IEEE} Computer Society},
+  year      = {1999},
+  url       = {https://doi.org/10.1109/LICS.1999.782583},
+  doi       = {10.1109/LICS.1999.782583},
+  timestamp = {Wed, 16 Oct 2019 14:14:54 +0200},
+  biburl    = {https://dblp.org/rec/conf/lics/HellaLNW99.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{real-closed-field,
+  author    = {James H. Davenport and
+               Joos Heintz},
+  title     = {Real Quantifier Elimination is Doubly Exponential},
+  journal   = {J. Symb. Comput.},
+  volume    = {5},
+  number    = {1/2},
+  pages     = {29--35},
+  year      = {1988},
+  url       = {https://doi.org/10.1016/S0747-7171(88)80004-X},
+  doi       = {10.1016/S0747-7171(88)80004-X},
+  timestamp = {Wed, 17 Feb 2021 08:57:10 +0100},
+  biburl    = {https://dblp.org/rec/journals/jsc/DavenportH88.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@MISC{SMTLIB,
+  author =       {Clark Barrett and Pascal Fontaine and Cesare Tinelli},
+  title =        {{The Satisfiability Modulo Theories Library (SMT-LIB)}},
+  howpublished = {{\tt www.SMT-LIB.org}},
+  year =         2016,
+}
+
+@article{spores,
+  author    = {Yisu Remy Wang and
+               Shana Hutchison and
+               Dan Suciu and
+               Bill Howe and
+               Jonathan Leang},
+  title     = {{SPORES:} Sum-Product Optimization via Relational Equality Saturation
+               for Large Scale Linear Algebra},
+  journal   = {Proc. {VLDB} Endow.},
+  volume    = {13},
+  number    = {11},
+  pages     = {1919--1932},
+  year      = {2020},
+  url       = {http://www.vldb.org/pvldb/vol13/p1919-wang.pdf},
+  timestamp = {Mon, 17 Aug 2020 18:32:39 +0200},
+  biburl    = {https://dblp.org/rec/journals/pvldb/WangHSHL20.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{semiring,
+  author    = {Todd J. Green and
+               Gregory Karvounarakis and
+               Val Tannen},
+  editor    = {Leonid Libkin},
+  title     = {Provenance semirings},
+  booktitle = {Proceedings of the Twenty-Sixth {ACM} {SIGACT-SIGMOD-SIGART} Symposium
+               on Principles of Database Systems, June 11-13, 2007, Beijing, China},
+  pages     = {31--40},
+  publisher = {{ACM}},
+  year      = {2007},
+  url       = {https://doi.org/10.1145/1265530.1265535},
+  doi       = {10.1145/1265530.1265535},
+  timestamp = {Wed, 28 Nov 2018 12:57:15 +0100},
+  biburl    = {https://dblp.org/rec/conf/pods/GreenKT07.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{guarded-logic,
+  author    = {Erich Gr{\"{a}}del},
+  editor    = {Harald Ganzinger},
+  title     = {Invited Talk: Decision procedures for guarded logics},
+  booktitle = {Automated Deduction - CADE-16, 16th International Conference on Automated
+               Deduction, Trento, Italy, July 7-10, 1999, Proceedings},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {1632},
+  pages     = {31--51},
+  publisher = {Springer},
+  year      = {1999},
+  url       = {https://doi.org/10.1007/3-540-48660-7\_3},
+  doi       = {10.1007/3-540-48660-7\_3},
+  timestamp = {Tue, 14 May 2019 10:00:39 +0200},
+  biburl    = {https://dblp.org/rec/conf/cade/Gradel99.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{tree-code,
+  author    = {Erich Gr{\"{a}}del},
+  title     = {Guarded fixed point logics and the monadic theory of countable trees},
+  journal   = {Theor. Comput. Sci.},
+  volume    = {288},
+  number    = {1},
+  pages     = {129--152},
+  year      = {2002},
+  url       = {https://doi.org/10.1016/S0304-3975(01)00151-7},
+  doi       = {10.1016/S0304-3975(01)00151-7},
+  timestamp = {Wed, 17 Feb 2021 21:58:18 +0100},
+  biburl    = {https://dblp.org/rec/journals/tcs/Gradel02.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{sygus,
+  author    = {Rajeev Alur and
+               Rastislav Bod{\'{\i}}k and
+               Garvit Juniwal and
+               Milo M. K. Martin and
+               Mukund Raghothaman and
+               Sanjit A. Seshia and
+               Rishabh Singh and
+               Armando Solar{-}Lezama and
+               Emina Torlak and
+               Abhishek Udupa},
+  title     = {Syntax-guided synthesis},
+  booktitle = {Formal Methods in Computer-Aided Design, {FMCAD} 2013, Portland, OR,
+               USA, October 20-23, 2013},
+  pages     = {1--8},
+  publisher = {{IEEE}},
+  year      = {2013},
+  url       = {https://ieeexplore.ieee.org/document/6679385/},
+  timestamp = {Mon, 09 Aug 2021 15:21:44 +0200},
+  biburl    = {https://dblp.org/rec/conf/fmcad/AlurBJMRSSSTU13.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{sketch,
+  author    = {Armando Solar{-}Lezama and
+               Liviu Tancau and
+               Rastislav Bod{\'{\i}}k and
+               Sanjit A. Seshia and
+               Vijay A. Saraswat},
+  editor    = {John Paul Shen and
+               Margaret Martonosi},
+  title     = {Combinatorial sketching for finite programs},
+  booktitle = {Proceedings of the 12th International Conference on Architectural
+               Support for Programming Languages and Operating Systems, {ASPLOS}
+               2006, San Jose, CA, USA, October 21-25, 2006},
+  pages     = {404--415},
+  publisher = {{ACM}},
+  year      = {2006},
+  url       = {https://doi.org/10.1145/1168857.1168907},
+  doi       = {10.1145/1168857.1168907},
+  timestamp = {Thu, 14 Oct 2021 10:41:55 +0200},
+  biburl    = {https://dblp.org/rec/conf/asplos/Solar-LezamaTBSS06.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{cascades,
+  author    = {Goetz Graefe},
+  title     = {The Cascades Framework for Query Optimization},
+  journal   = {{IEEE} Data Eng. Bull.},
+  volume    = {18},
+  number    = {3},
+  pages     = {19--29},
+  year      = {1995},
+  url       = {http://sites.computer.org/debull/95SEP-CD.pdf},
+  timestamp = {Tue, 10 Mar 2020 16:23:50 +0100},
+  biburl    = {https://dblp.org/rec/journals/debu/Graefe95a.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{oracle-opt,
+  author    = {Rafi Ahmed and
+               Allison W. Lee and
+               Andrew Witkowski and
+               Dinesh Das and
+               Hong Su and
+               Mohamed Za{\"{\i}}t and
+               Thierry Cruanes},
+  editor    = {Umeshwar Dayal and
+               Kyu{-}Young Whang and
+               David B. Lomet and
+               Gustavo Alonso and
+               Guy M. Lohman and
+               Martin L. Kersten and
+               Sang Kyun Cha and
+               Young{-}Kuk Kim},
+  title     = {Cost-Based Query Transformation in Oracle},
+  booktitle = {Proceedings of the 32nd International Conference on Very Large Data
+               Bases, Seoul, Korea, September 12-15, 2006},
+  pages     = {1026--1036},
+  publisher = {{ACM}},
+  year      = {2006},
+  url       = {http://dl.acm.org/citation.cfm?id=1164215},
+  timestamp = {Thu, 30 Apr 2015 18:34:40 +0200},
+  biburl    = {https://dblp.org/rec/conf/vldb/AhmedLWDSZC06.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{modal,
+  author    = {Moshe Y. Vardi},
+  editor    = {Neil Immerman and
+               Phokion G. Kolaitis},
+  title     = {Why is Modal Logic So Robustly Decidable?},
+  booktitle = {Descriptive Complexity and Finite Models, Proceedings of a {DIMACS}
+               Workshop 1996, Princeton, New Jersey, USA, January 14-17, 1996},
+  series    = {{DIMACS} Series in Discrete Mathematics and Theoretical Computer Science},
+  volume    = {31},
+  pages     = {149--183},
+  publisher = {{DIMACS/AMS}},
+  year      = {1996},
+  url       = {https://doi.org/10.1090/dimacs/031/05},
+  doi       = {10.1090/dimacs/031/05},
+  timestamp = {Tue, 16 Jul 2019 17:45:06 +0200},
+  biburl    = {https://dblp.org/rec/conf/dimacs/Vardi96.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{unusual,
+  author    = {Joseph Y. Halpern and
+               Robert Harper and
+               Neil Immerman and
+               Phokion G. Kolaitis and
+               Moshe Y. Vardi and
+               Victor Vianu},
+  title     = {On the unusual effectiveness of logic in computer science},
+  journal   = {Bull. Symb. Log.},
+  volume    = {7},
+  number    = {2},
+  pages     = {213--236},
+  year      = {2001},
+  url       = {https://doi.org/10.2307/2687775},
+  doi       = {10.2307/2687775},
+  timestamp = {Fri, 03 Jul 2020 17:55:58 +0200},
+  biburl    = {https://dblp.org/rec/journals/bsl/HalpernHIKVV01.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{backchase,
+  author    = {Alin Deutsch and
+               Lucian Popa and
+               Val Tannen},
+  title     = {Query reformulation with constraints},
+  journal   = {{SIGMOD} Rec.},
+  volume    = {35},
+  number    = {1},
+  pages     = {65--73},
+  year      = {2006},
+  url       = {https://doi.org/10.1145/1121995.1122010},
+  doi       = {10.1145/1121995.1122010},
+  timestamp = {Fri, 06 Mar 2020 21:55:56 +0100},
+  biburl    = {https://dblp.org/rec/journals/sigmod/DeutschPT06.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{chase-maier,
+  author    = {David Maier and
+               Alberto O. Mendelzon and
+               Yehoshua Sagiv},
+  editor    = {Philip A. Bernstein},
+  title     = {Testing Implications of Data Dependencies (Abstract)},
+  booktitle = {Proceedings of the 1979 {ACM} {SIGMOD} International Conference on
+               Management of Data, Boston, Massachusetts, USA, May 30 - June 1},
+  pages     = {152},
+  publisher = {{ACM}},
+  year      = {1979},
+  url       = {https://doi.org/10.1145/582095.582119},
+  doi       = {10.1145/582095.582119},
+  timestamp = {Thu, 11 Mar 2021 15:20:15 +0100},
+  biburl    = {https://dblp.org/rec/conf/sigmod/MaierMS79.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{chase-beeri,
+  author    = {Catriel Beeri and
+               Moshe Y. Vardi},
+  title     = {A Proof Procedure for Data Dependencies},
+  journal   = {J. {ACM}},
+  volume    = {31},
+  number    = {4},
+  pages     = {718--741},
+  year      = {1984},
+  url       = {https://doi.org/10.1145/1634.1636},
+  doi       = {10.1145/1634.1636},
+  timestamp = {Tue, 06 Nov 2018 12:51:44 +0100},
+  biburl    = {https://dblp.org/rec/journals/jacm/BeeriV84.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{chase-bench,
+  author    = {Michael Benedikt and
+               George Konstantinidis and
+               Giansalvatore Mecca and
+               Boris Motik and
+               Paolo Papotti and
+               Donatello Santoro and
+               Efthymia Tsamoura},
+  editor    = {Emanuel Sallinger and
+               Jan Van den Bussche and
+               Floris Geerts},
+  title     = {Benchmarking the Chase},
+  booktitle = {Proceedings of the 36th {ACM} {SIGMOD-SIGACT-SIGAI} Symposium on Principles
+               of Database Systems, {PODS} 2017, Chicago, IL, USA, May 14-19, 2017},
+  pages     = {37--52},
+  publisher = {{ACM}},
+  year      = {2017},
+  url       = {https://doi.org/10.1145/3034786.3034796},
+  doi       = {10.1145/3034786.3034796},
+  timestamp = {Wed, 03 Jun 2020 19:34:30 +0200},
+  biburl    = {https://dblp.org/rec/conf/pods/BenediktKMMPST17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{functionalaggregate,
+  author    = {Mahmoud Abo Khamis and
+               Hung Q. Ngo and
+               Atri Rudra},
+  editor    = {Tova Milo and
+               Wang{-}Chiew Tan},
+  title     = {{FAQ:} Questions Asked Frequently},
+  booktitle = {Proceedings of the 35th {ACM} {SIGMOD-SIGACT-SIGAI} Symposium on Principles
+               of Database Systems, {PODS} 2016, San Francisco, CA, USA, June 26
+               - July 01, 2016},
+  pages     = {13--28},
+  publisher = {{ACM}},
+  year      = {2016},
+  url       = {https://doi.org/10.1145/2902251.2902280},
+  doi       = {10.1145/2902251.2902280},
+  timestamp = {Thu, 14 Oct 2021 10:38:21 +0200},
+  biburl    = {https://dblp.org/rec/conf/pods/KhamisNR16.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{sparsetensors,
+  author    = {Mahmoud Abo Khamis and
+               Hung Q. Ngo and
+               XuanLong Nguyen and
+               Dan Olteanu and
+               Maximilian Schleich},
+  editor    = {Jan Van den Bussche and
+               Marcelo Arenas},
+  title     = {In-Database Learning with Sparse Tensors},
+  booktitle = {Proceedings of the 37th {ACM} {SIGMOD-SIGACT-SIGAI} Symposium on Principles
+               of Database Systems, Houston, TX, USA, June 10-15, 2018},
+  pages     = {325--340},
+  publisher = {{ACM}},
+  year      = {2018},
+  url       = {https://doi.org/10.1145/3196959.3196960},
+  doi       = {10.1145/3196959.3196960},
+  timestamp = {Thu, 14 Oct 2021 10:38:21 +0200},
+  biburl    = {https://dblp.org/rec/conf/pods/Khamis0NOS18.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{juggling,
+  author    = {Mahmoud Abo Khamis and
+               Hung Q. Ngo and
+               Atri Rudra},
+  title     = {Juggling Functions Inside a Database},
+  journal   = {{SIGMOD} Rec.},
+  volume    = {46},
+  number    = {1},
+  pages     = {6--13},
+  year      = {2017},
+  url       = {https://doi.org/10.1145/3093754.3093757},
+  doi       = {10.1145/3093754.3093757},
+  timestamp = {Thu, 14 Oct 2021 09:11:38 +0200},
+  biburl    = {https://dblp.org/rec/journals/sigmod/Khamis0R17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@incollection{pytorch,
+title = {PyTorch: An Imperative Style, High-Performance Deep Learning Library},
+author = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and Desmaison, Alban and Kopf, Andreas and Yang, Edward and DeVito, Zachary and Raison, Martin and Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+booktitle = {Advances in Neural Information Processing Systems 32},
+editor = {H. Wallach and H. Larochelle and A. Beygelzimer and F. d\textquotesingle Alch\'{e}-Buc and E. Fox and R. Garnett},
+pages = {8024--8035},
+year = {2019},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.neurips.cc/paper/9015-pytorch-an-imperative-style-high-performance-deep-learning-library.pdf}
+}
+
+@article{tensorcomprehension,
+  author    = {Nicolas Vasilache and
+               Oleksandr Zinenko and
+               Theodoros Theodoridis and
+               Priya Goyal and
+               Zachary DeVito and
+               William S. Moses and
+               Sven Verdoolaege and
+               Andrew Adams and
+               Albert Cohen},
+  title     = {Tensor Comprehensions: Framework-Agnostic High-Performance Machine
+               Learning Abstractions},
+  journal   = {CoRR},
+  volume    = {abs/1802.04730},
+  year      = {2018},
+  url       = {http://arxiv.org/abs/1802.04730},
+  eprinttype = {arXiv},
+  eprint    = {1802.04730},
+  timestamp = {Thu, 14 Oct 2021 09:16:52 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1802-04730.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{reasoners,
+  author    = {Michael Benedikt},
+  editor    = {Jan Van den Bussche and
+               Marcelo Arenas},
+  title     = {How Can Reasoners Simplify Database Querying (And Why Haven't They
+               Done It Yet)?},
+  booktitle = {Proceedings of the 37th {ACM} {SIGMOD-SIGACT-SIGAI} Symposium on Principles
+               of Database Systems, Houston, TX, USA, June 10-15, 2018},
+  pages     = {1--15},
+  publisher = {{ACM}},
+  year      = {2018},
+  url       = {https://doi.org/10.1145/3196959.3196989},
+  doi       = {10.1145/3196959.3196989},
+  timestamp = {Wed, 21 Nov 2018 12:44:18 +0100},
+  biburl    = {https://dblp.org/rec/conf/pods/Benedikt18.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{craig,
+  author    = {William Craig},
+  title     = {Three Uses of the Herbrand-Gentzen Theorem in Relating Model Theory
+               and Proof Theory},
+  journal   = {J. Symb. Log.},
+  volume    = {22},
+  number    = {3},
+  pages     = {269--285},
+  year      = {1957},
+  url       = {https://doi.org/10.2307/2963594},
+  doi       = {10.2307/2963594},
+  timestamp = {Sun, 28 May 2017 13:21:51 +0200},
+  biburl    = {https://dblp.org/rec/journals/jsyml/Craig57a.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@book{alice,
+  author    = {Serge Abiteboul and
+               Richard Hull and
+               Victor Vianu},
+  title     = {Foundations of Databases},
+  publisher = {Addison-Wesley},
+  year      = {1995},
+  url       = {http://webdam.inria.fr/Alice/},
+  isbn      = {0-201-53771-0},
+  timestamp = {Sat, 11 Nov 2017 21:53:30 +0100},
+  biburl    = {https://dblp.org/rec/books/aw/AbiteboulHV95.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{pdq,
+  author    = {Michael Benedikt and
+               Julien Leblay and
+               Efthymia Tsamoura},
+  title     = {{PDQ:} Proof-driven Query Answering over Web-based Data},
+  journal   = {Proc. {VLDB} Endow.},
+  volume    = {7},
+  number    = {13},
+  pages     = {1553--1556},
+  year      = {2014},
+  url       = {http://www.vldb.org/pvldb/vol7/p1553-benedikt.pdf},
+  doi       = {10.14778/2733004.2733028},
+  timestamp = {Sat, 25 Apr 2020 13:58:34 +0200},
+  biburl    = {https://dblp.org/rec/journals/pvldb/BenediktLT14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{chu,
+  author    = {Shumo Chu and
+               Brendan Murphy and
+               Jared Roesch and
+               Alvin Cheung and
+               Dan Suciu},
+  title     = {Axiomatic Foundations and Algorithms for Deciding Semantic Equivalences
+               of {SQL} Queries},
+  journal   = {Proc. {VLDB} Endow.},
+  volume    = {11},
+  number    = {11},
+  pages     = {1482--1495},
+  year      = {2018},
+  url       = {http://www.vldb.org/pvldb/vol11/p1482-chu.pdf},
+  doi       = {10.14778/3236187.3236200},
+  timestamp = {Sat, 25 Apr 2020 13:59:29 +0200},
+  biburl    = {https://dblp.org/rec/journals/pvldb/ChuMRCS18.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{cosette,
+  title={Cosette: An Automated Prover for SQL.},
+  author={Chu, Shumo and Wang, Chenglong and Weitz, Konstantin and Cheung, Alvin},
+  booktitle={CIDR},
+  year={2017}
+}
+
+@inproceedings{malecha,
+  author    = {J. Gregory Malecha and
+               Greg Morrisett and
+               Avraham Shinnar and
+               Ryan Wisnesky},
+  editor    = {Manuel V. Hermenegildo and
+               Jens Palsberg},
+  title     = {Toward a verified relational database management system},
+  booktitle = {Proceedings of the 37th {ACM} {SIGPLAN-SIGACT} Symposium on Principles
+               of Programming Languages, {POPL} 2010, Madrid, Spain, January 17-23,
+               2010},
+  pages     = {237--248},
+  publisher = {{ACM}},
+  year      = {2010},
+  url       = {https://doi.org/10.1145/1706299.1706329},
+  doi       = {10.1145/1706299.1706329},
+  timestamp = {Tue, 22 Jun 2021 17:10:57 +0200},
+  biburl    = {https://dblp.org/rec/conf/popl/MalechaMSW10.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{dove,
+  title={Optimizing Recursive Queries with Program Synthesis.},
+  author={Wang, Yisu Remy and Khamis, Mahmoud Abo and Ngo, Hung Q and Pichler, Reinhard and Suciu, Dan},
+  booktitle={SIGMOD},
+  year={2022}
+}
+
+@inproceedings{ematching,
+  author    = {Leonardo Mendon{\c{c}}a de Moura and
+               Nikolaj Bj{\o}rner},
+  editor    = {Frank Pfenning},
+  title     = {Efficient E-Matching for {SMT} Solvers},
+  booktitle = {Automated Deduction - CADE-21, 21st International Conference on Automated
+               Deduction, Bremen, Germany, July 17-20, 2007, Proceedings},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {4603},
+  pages     = {183--198},
+  publisher = {Springer},
+  year      = {2007},
+  url       = {https://doi.org/10.1007/978-3-540-73595-3\_13},
+  doi       = {10.1007/978-3-540-73595-3\_13},
+  timestamp = {Tue, 14 May 2019 10:00:39 +0200},
+  biburl    = {https://dblp.org/rec/conf/cade/MouraB07.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{cong,
+author = {Downey, Peter J. and Sethi, Ravi and Tarjan, Robert Endre},
+title = {Variations on the Common Subexpression Problem},
+year = {1980},
+issue_date = {Oct. 1980},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {27},
+number = {4},
+issn = {0004-5411},
+url = {https://doi.org/10.1145/322217.322228},
+doi = {10.1145/322217.322228},
+journal = {J. ACM},
+month = {oct},
+pages = {758–771},
+numpages = {14}
+}
