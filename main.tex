@@ -36,8 +36,9 @@
 \newcommand{\setof}[2]{\{{#1}\mid{#2}\}}        % Set (as in \setof{x}{x>0}).
 
 \usetheme{metropolis}           % Use metropolis theme
+\setbeameroption{show notes}
 % \setbeameroption{show only notes}
-\setbeameroption{hide notes}
+% \setbeameroption{hide notes}
 
 \title{Optimizing Modern Data Processing Systems with Automated Reasoning}
 \date{\today}
@@ -45,17 +46,37 @@
 \institute{University of Washington}
 \begin{document}
   \maketitle
-  \note{yo}
+  \note{Welcome. My name is Remy and today I will talk about how to optimize modern data processing 
+  systems with automated reasoning.}
 
   \begin{frame}{Overview}
-    \note{sup}
+    \note{Here is an overview of my talk. 
+    I will start by introducing various challenges posed by modern data processing, 
+    then cover some background on query Optimization and reasoning.
+    Next I will present the functional representation of data 
+    and show you how to build optimizers that reason. 
+    Finally, I will propose a new research project to improve optimizers with reasoning 
+    before concluding.}
     \tableofcontents
   \end{frame}
 
   \section{Modern Data Processing}
+  \note{Let's get started.}
 
   \begin{frame}{Modern Data Processing: Queries}
-    \note{blah}
+    \note{Here is an example query that may be part of a modern data analytics task. 
+    It computes the Betweenness centrality of a graph E.
+    You don't need to understand the details about the computation,
+    and I will just highlight a few aspects of the query.
+    First we see that the query operates on a graph, which may be represented by a matrix, 
+    instead of relational data found in traditional databases.
+    Second, the computation is driven mainly by aggregation and arithmetic like multiplication and division.
+    Third, the query is recursive, as both the body and the head contains C. 
+    Even though some of these features can be modeled relationally, they are not well-supported 
+    by traditional optimizers. 
+    For example, here is a very simple optimization rewriting the count of a cartesian product into 
+    the product of counts; yet Postgres cannot perform the optimization. 
+    }
     Betweenness centrality of a graph $E$:
     \begin{align*}
       C(s, v) = \sum_{t: E(v, t) \wedge D(s, t)=D(s, v+1)} 
@@ -72,6 +93,11 @@
   \end{frame}
 
   \begin{frame}{Modern Data Processing: Data}
+    \note{Apart from queries, the other side of data processing is data. 
+    It is well-known that the world is generating more and more data at an increasing speed.
+    If we want to analyze such large and fast data efficiently, 
+    the optimizer must produce faster query plans using shorter time.
+    }
     \begin{columns}
       \begin{column}{{0.5\textwidth}}
         \includegraphics[width=\linewidth]{datasphere.png}
@@ -87,6 +113,10 @@
   \end{frame}
 
   \begin{frame}{Modern Data Processing: Systems}
+    \note{Another dimension of data processing is the systems themselves.
+    Recent years have seen a Cambrian explosion of data processing systems. 
+    Since each of these systems need to optimize queries, 
+    simplifying the design and implementation of optimizers can save a lot of time for everyone. }
     \begin{figure}
     \includegraphics[width=\linewidth]{systems.png}
     \end{figure}
@@ -97,6 +127,8 @@
   \end{frame}
 
   \begin{frame}{My Theses}
+    \note{My goal is exactly to improve query optimizers to support modern data processing. 
+    My these are the following:}
     \begin{itemize}
       \item Core components and techniques from \textbf{automated reasoning}
       can make query optimizers simpler, more efficient,
@@ -107,7 +139,16 @@
   \end{frame}
 
   \section{Background: Query Optimization and Reasoning}
+  \note{Before I present the techniques, let's review some background on query optimization and reasoning.}
+
   \begin{frame}{Query Optimization}
+    \note{Here is a cartoon illustration of query optimization. 
+    The optimizer searches among a space of query plans, 
+    where a part of the space are those equivalent to the input.
+    Among these, the optimizer tries to find a plan that is more efficient.
+    We can think of this as a synthesis problem, where the optimizer 
+    needs to synthesize a query that satisfies the specification 
+    that it is both equivalent to the input and faster.}
     \begin{figure}
       \includegraphics[width=0.7\linewidth]{opt.pdf}
     \end{figure}
@@ -118,6 +159,8 @@
   \end{frame}
 
   \begin{frame}{Query Optimization}
+    \note{There is a problem related to query optimization: ... 
+    This is a verification problem.}
     A related problem: given constraints ($\Sigma$) on the data ($I$), 
     check if two queries ($\psi, \phi$) are equivalent.
     \[\forall I . \Sigma(I) \implies (\psi(I) = \phi(I)) \] \pause
@@ -126,11 +169,15 @@
   \end{frame}
 
   \begin{frame}{Automated Reasoning}
+    \note{The good news is, ..., and some have already been applied 
+    to improve data processing}
     Both verification problems and synthesis problems are studied 
     extensively in automated reasoning.
   \end{frame}
 
   \begin{frame}{Automated Reasoning for Data Processing}
+    \note{One example of applying reasoning to data processing 
+    involves the well-known chase procedure. ...}
     \textbf{The Chase} is an algorithm that has wide applications 
     in data management. It has the property:
     \begin{alertblock}{The Chase preserves query equivalence}
@@ -152,20 +199,20 @@
     by chasing $Q'$.
   \end{frame}
 
-  \begin{frame}{Automated Reasoning for Data Processing}
-    \textbf{Tree Automata} can capture certain class of
-    relational queries, by coding tree-like data with trees.
-    \begin{figure}
-      \colorbox{white}{
-      \includegraphics[width=0.3\linewidth]{tree1.pdf}
-      \hspace{1cm}
-      \includegraphics[width=0.3\linewidth]{tree2.pdf}}
-    \end{figure}
-    \pause
-    Emptiness of tree automata is \textbf{decidable}! \\
-    Check query containment: 
-    $Q_1 \subseteq Q_2 \rightarrow A_{Q_1 \wedge \neg Q_2} = \emptyset$
-  \end{frame}
+  % \begin{frame}{Automated Reasoning for Data Processing}
+  %   \textbf{Tree Automata} can capture certain class of
+  %   relational queries, by coding tree-like data with trees.
+  %   \begin{figure}
+  %     \colorbox{white}{
+  %     \includegraphics[width=0.3\linewidth]{tree1.pdf}
+  %     \hspace{1cm}
+  %     \includegraphics[width=0.3\linewidth]{tree2.pdf}}
+  %   \end{figure}
+  %   \pause
+  %   Emptiness of tree automata is \textbf{decidable}! \\
+  %   Check query containment: 
+  %   $Q_1 \subseteq Q_2 \rightarrow A_{Q_1 \wedge \neg Q_2} = \emptyset$
+  % \end{frame}
 
   \begin{frame}{Automated Reasoning for Data Processing}
     \textbf{Axiomatic Rewriting} proves equivalence by chaining together 
@@ -187,19 +234,10 @@
     which gives a solution when there is a model for $Q$.
   \end{frame}
 
-  \begin{frame}{Mismatch of Reasoning and Modern Data Processing}
-    \begin{itemize}
-      \item Logic assume set semantics; but data processing needs bag/beyond-bag semantics. \pause
-      \item Logics w/ aggregates exist, but no support in well-engineered reasoners (SMT solvers). \pause
-      \item Most system developers don't have deep knowledge on logic. 
-    \end{itemize}    
-  \end{frame}
+  \begin{frame}{Automated Reasoning for Data Processing}
+    \textbf{Goal}: leverage automated reasoning to build query optimizers.
 
-  \begin{frame}{Mismatch of Reasoning and Modern Data Processing}
-    \textbf{Need:} simple ways to reason about the expressive semantics and operations in modern 
-    data processing. \pause
-
-    \textbf{Solution:} functional representation + axiomatic rewrite + SMT
+    \textbf{Approach}: functional representation + axiomatic rewrite + SMT
   \end{frame}
   
   \section{Functional Representation of Data}
