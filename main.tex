@@ -36,6 +36,8 @@
 \newcommand{\setof}[2]{\{{#1}\mid{#2}\}}        % Set (as in \setof{x}{x>0}).
 
 \usetheme{metropolis}           % Use metropolis theme
+% \setbeameroption{show only notes}
+\setbeameroption{hide notes}
 
 \title{Optimizing Modern Data Processing Systems with Automated Reasoning}
 \date{\today}
@@ -43,14 +45,17 @@
 \institute{University of Washington}
 \begin{document}
   \maketitle
+  \note{yo}
 
   \begin{frame}{Overview}
+    \note{sup}
     \tableofcontents
   \end{frame}
 
   \section{Modern Data Processing}
 
   \begin{frame}{Modern Data Processing: Queries}
+    \note{blah}
     Betweenness centrality of a graph $E$:
     \begin{align*}
       C(s, v) = \sum_{t: E(v, t) \wedge D(s, t)=D(s, v+1)} 
