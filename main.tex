@@ -36,9 +36,9 @@
 \newcommand{\setof}[2]{\{{#1}\mid{#2}\}}        % Set (as in \setof{x}{x>0}).
 
 \usetheme{metropolis}           % Use metropolis theme
-\setbeameroption{show notes}
+% \setbeameroption{show notes}
 % \setbeameroption{show only notes}
-% \setbeameroption{hide notes}
+\setbeameroption{hide notes}
 
 \title{Optimizing Modern Data Processing Systems with Automated Reasoning}
 \date{\today}
@@ -84,7 +84,7 @@
     \end{align*}
     where $D$ is the distance, $\sigma$ is the \# of shortest paths. \pause
     \begin{itemize}
-      \item Non-relational data \pause
+      \item Graph data \pause
       \item Aggregation \& interpreted functions \pause
       \item Recursive \pause
      \end{itemize}
@@ -175,64 +175,64 @@
     extensively in automated reasoning.
   \end{frame}
 
-  \begin{frame}{Automated Reasoning for Data Processing}
-    \note{One example of applying reasoning to data processing 
-    involves the well-known chase procedure. ...}
-    \textbf{The Chase} is an algorithm that has wide applications 
-    in data management. It has the property:
-    \begin{alertblock}{The Chase preserves query equivalence}
-      Chasing a query $Q$ with a set of integrity constraints $\Sigma$
-      results in a query $Q'$ s.t.~$\Sigma \models Q'\equiv Q$.
-    \end{alertblock}
-  \end{frame}
-
-  \begin{frame}{Automated Reasoning for Data Processing}
-    \textbf{Chase \& Backchase}~\cite{backchase}: Given $Q$, find the smallest~\footnote{
-      Refer to~\cite{backchase} for a formal definition of ``small''.
-    }
-    query $Q'$ s.t.~$Q'\equiv Q$.
-    \begin{figure}
-      \includegraphics[width=0.3\linewidth]{backchase.pdf}
-    \end{figure}
-    First chase the input into a {\em universal} plan $\hat Q$, \pause 
-    then check if any subplan $Q'$ of $\hat Q$ is equiv.~to $Q$,
-    by chasing $Q'$.
-  \end{frame}
-
   % \begin{frame}{Automated Reasoning for Data Processing}
-  %   \textbf{Tree Automata} can capture certain class of
-  %   relational queries, by coding tree-like data with trees.
-  %   \begin{figure}
-  %     \colorbox{white}{
-  %     \includegraphics[width=0.3\linewidth]{tree1.pdf}
-  %     \hspace{1cm}
-  %     \includegraphics[width=0.3\linewidth]{tree2.pdf}}
-  %   \end{figure}
-  %   \pause
-  %   Emptiness of tree automata is \textbf{decidable}! \\
-  %   Check query containment: 
-  %   $Q_1 \subseteq Q_2 \rightarrow A_{Q_1 \wedge \neg Q_2} = \emptyset$
+  %   \note{One example of applying reasoning to data processing 
+  %   involves the well-known chase procedure. ...}
+  %   \textbf{The Chase} is an algorithm that has wide applications 
+  %   in data management. It has the property:
+  %   \begin{alertblock}{The Chase preserves query equivalence}
+  %     Chasing a query $Q$ with a set of integrity constraints $\Sigma$
+  %     results in a query $Q'$ s.t.~$\Sigma \models Q'\equiv Q$.
+  %   \end{alertblock}
   % \end{frame}
 
-  \begin{frame}{Automated Reasoning for Data Processing}
-    \textbf{Axiomatic Rewriting} proves equivalence by chaining together 
-    a sequence of axioms. \pause
-    Rule-based query optimizers essentially implement that, for example:
-    \[\forall R, S, p: \sigma_p (R\bowtie S) \equiv \sigma_p(R) \bowtie \sigma_p(S)\]
-    corresponds to the ``push-down selection'' rewrite.\pause
+  % \begin{frame}{Automated Reasoning for Data Processing}
+  %   \textbf{Chase \& Backchase}~\cite{backchase}: Given $Q$, find the smallest~\footnote{
+  %     Refer to~\cite{backchase} for a formal definition of ``small''.
+  %   }
+  %   query $Q'$ s.t.~$Q'\equiv Q$.
+  %   \begin{figure}
+  %     \includegraphics[width=0.3\linewidth]{backchase.pdf}
+  %   \end{figure}
+  %   First chase the input into a {\em universal} plan $\hat Q$, \pause 
+  %   then check if any subplan $Q'$ of $\hat Q$ is equiv.~to $Q$,
+  %   by chasing $Q'$.
+  % \end{frame}
 
-    If two queries can rewrite to each other, they are equivalent.
-  \end{frame}
+  % % \begin{frame}{Automated Reasoning for Data Processing}
+  % %   \textbf{Tree Automata} can capture certain class of
+  % %   relational queries, by coding tree-like data with trees.
+  % %   \begin{figure}
+  % %     \colorbox{white}{
+  % %     \includegraphics[width=0.3\linewidth]{tree1.pdf}
+  % %     \hspace{1cm}
+  % %     \includegraphics[width=0.3\linewidth]{tree2.pdf}}
+  % %   \end{figure}
+  % %   \pause
+  % %   Emptiness of tree automata is \textbf{decidable}! \\
+  % %   Check query containment: 
+  % %   $Q_1 \subseteq Q_2 \rightarrow A_{Q_1 \wedge \neg Q_2} = \emptyset$
+  % % \end{frame}
 
-  \begin{frame}{Automated Reasoning for Data Processing}
-    \textbf{Program Verification} checks if a program satisfies a specification:
-    \[\Psi(Q_{\text{in}}, Q) \stackrel{def}{=} \forall \bar R : Q_{\text{in}}(\bar R) = Q(\bar R)\]
-    which is valid if $Q_{\text{in}}(\bar R) \neq Q(\bar R)$ is UNSAT (no model for $\bar R$). \pause
+  % \begin{frame}{Automated Reasoning for Data Processing}
+  %   \textbf{Axiomatic Rewriting} proves equivalence by chaining together 
+  %   a sequence of axioms. \pause
+  %   Rule-based query optimizers essentially implement that, for example:
+  %   \[\forall R, S, p: \sigma_p (R\bowtie S) \equiv \sigma_p(R) \bowtie \sigma_p(S)\]
+  %   corresponds to the ``push-down selection'' rewrite.\pause
 
-    \textbf{Program Synthesis} generates a program satisfying a specification:
-    \[\Phi(Q_{\text{in}}) \stackrel{def}{=} \forall \bar R : Q_{\text{in}}(\bar R) = Q(\bar R)\]
-    which gives a solution when there is a model for $Q$.
-  \end{frame}
+  %   If two queries can rewrite to each other, they are equivalent.
+  % \end{frame}
+
+  % \begin{frame}{Automated Reasoning for Data Processing}
+  %   \textbf{Program Verification} checks if a program satisfies a specification:
+  %   \[\Psi(Q_{\text{in}}, Q) \stackrel{def}{=} \forall \bar R : Q_{\text{in}}(\bar R) = Q(\bar R)\]
+  %   which is valid if $Q_{\text{in}}(\bar R) \neq Q(\bar R)$ is UNSAT (no model for $\bar R$). \pause
+
+  %   \textbf{Program Synthesis} generates a program satisfying a specification:
+  %   \[\Phi_{Q_{\text{in}}}(Q) \stackrel{def}{=} \forall \bar R : Q_{\text{in}}(\bar R) = Q(\bar R)\]
+  %   which gives a solution when there is a model for $Q$.
+  % \end{frame}
 
   \begin{frame}{Automated Reasoning for Data Processing}
     \textbf{Goal}: leverage automated reasoning to build query optimizers.
@@ -299,8 +299,9 @@
   \end{frame}
 
   \begin{frame}{The Functional Representation of Data}
-    \alert{Isomorphism Captures Equivalence} ($\bigstar$)~\cite{spores}
-    Let $e_1, e_2$ be two  canonical expressions.
+    \alert{Isomorphism Captures Equivalence} ($\bigstar$)~\cite{spores,semiring}
+    Let $e_1, e_2$ be two canonical\footnote{Refer to~\cite{spores} for a definition of the canonical form.}
+     expressions.
     Then the following conditions are equivalent:
     \begin{itemize}
   % \itemsep0em
